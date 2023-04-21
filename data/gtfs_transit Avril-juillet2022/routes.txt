@@ -1,0 +1,65 @@
+route_id,route_short_name,route_long_name,route_desc,route_type,route_color,route_text_color
+02-1367,2,"Elmerforst - Jardin des Deux Rives",,3,E10D19,FFFFFF
+04-1215,4,"Wolfisheim Stade /4a Poteries - Les Halles",,3,CF0D1C,FFFFFF
+04-1331,4,"Wolfisheim Stade /4a Poteries - Les Halles",,3,CF0D1C,FFFFFF
+10-1309,10,"Gare Centrale - Musée d'Art Moderne - Gallia",,3,F8B705,000000
+12-1244,12,"Entzheim Ouest - Lingolsheim Alouettes",,3,89CDD1,000000
+13-1310,13,"Illkirch Fort Uhrich - Lingolsheim Gare",,3,F3C6DB,000000
+14-1128,14,"Ancienne Douane - Neuhof Lorient / La Rochelle",,3,89CDD1,000000
+15-1197,15,"République -  Boecklin",,3,89CDD1,000000
+17-1143,17,"Mittelhausbergen Mittelberg - Rotonde",,3,F3C6DB,000000
+19-1143,19,"Rotonde - Arago",,3,F3C6DB,000000
+22-1244,22,"Holtzheim Ouest - Lingolsheim Alouettes",,3,89CDD1,000000
+24-1128,24,"Ancienne Douane - Neuhof Stéphanie/Pl des Colombes",,3,89CDD1,000000
+27-1281,27,"Baggersee - Neuhof Lorient/Port Autonome Sud",,3,9FC20F,000000
+29-1238,29,"Schnokeloch - Schiltigheim Campus",,3,009035,FFFFFF
+30-1223,30,"Wattwiller - Robertsau Sainte Anne/ Chasseurs",,3,FFDC08,000000
+31-826,31,"Wattwiller - Kibitzenau",,3,F3C6DB,000000
+40-1269,40,"Unterelsau - Neuhof Ganzau",,3,FFDC08,000000
+40-1312,40,"Unterelsau - Neuhof Ganzau",,3,FFDC08,000000
+41-1235,41,"Achenheim Ouest - Poteries/Les Halles",,3,89CCCF,000000
+42-1245,42,"Entzheim Ouest - Entzheim Gare",,3,C273A8,FFFFFF
+43-1034,43,"Holtzheim Ouest - Entzheim Gare",,3,E75113,FFFFFF
+44-1243,44,"Kolbsheim Mairie - Entzheim Gare",,3,729ECF,FFFFFF
+45-1333,45,"Lingolsheim Alouettes - Sport",,3,9A5527,FFFFFF
+50-1311,50,"Montagne Verte - Schiltigheim Le Marais",,3,FFDC08,000000
+57-1263,57,"Kibitzenau - Geispolsheim Ouest / Blaesheim Ouest",,3,EC7007,000000
+60-1240,60,"Wacken - Mundolsheim Découvertes",,3,EC7007,FFFFFF
+62-914,62,"Geispolsheim Gare - Lipsheim Centre",,3,BDD753,000000
+63-915,63,"Campus d'Illkirch-Parc d'Innovation/Lipsheim Gare",,3,7DBBDF,000000
+64-1198,64,"Lingolsheim Alouettes - Campus d'Illkirch",,3,EA5297,FFFFFF
+67-1263,67,"Kibitzenau - Graffenstaden Digue / Plobsheim Est",,3,6DB122,FFFFFF
+70-1116,70,"Rob. Renaissance-Poteries/Eckbolsheim Parc d'Act.",,3,F8B705,000000
+71-1316,71,"Les Halles - Eckwersheim Hippodrome",,3,73B3DE,FFFFFF
+72-1109,72,"La Wantzenau  Le Golf - République",,3,F3C6DB,000000
+73-1085,73,"Lampertheim Alisiers - Les Halles",,3,B5833C,FFFFFF
+74-1307,74,"Hoenheim Gare-Vendenheim Ar./Reichstett/EcoParc R.",,3,008231,FFFFFF
+75-1225,75,"Les Halles-Vendenheim Mairie/Eckwersheim Hippodro.",,3,9FC204,000000
+76-1240,76,"Les Halles - Reichstett Vergers",,3,C273A8,FFFFFF
+87-1277,Remplacement-A-E,"Etoile Bourse - Campus d'Illkirch",,3,F7E922,000000
+88-481,Remplacement-B,"Lingolsheim Tiergaertel - Montagne Verte",,3,009EE0,FFFFFF
+88-1121,Remplacement-B,"Wacken - Hoenheim Gare",,3,009EE0,FFFFFF
+89-1260,Remplacement-E,"Wacken - Robertsau L'Escale",,3,9085BA,FFFFFF
+A-1357,A,"Parc des Sports - Illkirch Graffenstaden",,0,E10D19,FFFFFF
+A-1376,A,"Parc des Sports - Illkirch Graffenstaden",,0,E10D19,FFFFFF
+B-1322,B,"Lingolsheim Tiergaertel - Hoenheim Gare",,0,009EE0,FFFFFF
+B-1334,B,"Lingolsheim Tiergaertel - Hoenheim Gare",,0,009EE0,FFFFFF
+C-1321,C,"Gare Centrale - Neuhof Rodolphe Reuss",,0,F29400,FFFFFF
+C-1334,C,"Gare Centrale - Neuhof Rodolphe Reuss",,0,F29400,FFFFFF
+C-1376,C,"Gare Centrale - Neuhof Rodolphe Reuss",,0,F29400,FFFFFF
+D-1357,D,"Poteries - Port du Rhin / Kehl Rathaus",,0,009933,FFFFFF
+D-1376,D,"Poteries - Port du Rhin / Kehl Rathaus",,0,009933,FFFFFF
+E-1321,E,"Robertsau L'Escale - Campus d'Illkirch",,0,9085BA,FFFFFF
+E-1334,E,"Robertsau L'Escale - Campus d'Illkirch",,0,9085BA,FFFFFF
+E-1376,E,"Robertsau L'Escale - Campus d'Illkirch",,0,9085BA,FFFFFF
+F-1322,F,"Comtes - Place d'Islande",,0,97BF0D,FFFFFF
+F-1334,F,"Comtes - Place d'Islande",,0,97BF0D,FFFFFF
+G-791,G,"Gare Centrale - Espace Européen de l'Entreprise",,3,004494,FFFFFF
+H-1242,H,"Gare Centrale - Parlement Européen",,3,A62341,FFFFFF
+L1-1221,L1,"Lingolsheim Alouettes - Robertsau Lamproie",,3,084796,FFFFFF
+L3-1329,L3,"Hoenheim Gare - Les Halles",,3,9FC204,FFFFFF
+L6-1330,L6,"Pont Phario - Hoenheim Gare/Vendenheim Gare",,3,7D5D9F,FFFFFF
+N1-1377,N1," Robertsau Boecklin - Corbeau",,3,E72E58,FFFFFF
+N2-1377,N2,"Campus d'Illkirch - Corbeau",,3,178FCB,FFFFFF
+N3-1377,N3," Mathieu Zell - Corbeau",,3,EDAA1D,FFFFFF
+ROST-1164,Robertsau,"Boecklin - Robertsau Renaissance",,3,D0AACC,FFFFFF

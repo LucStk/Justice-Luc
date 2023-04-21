@@ -1,0 +1,2 @@
+feed_publisher_name,feed_publisher_url,feed_lang,feed_start_date,feed_end_date,feed_version,feed_id
+CTS,"http://www.cts-strasbourg.eu/fr/portail-open-data",FR,20220415,20220606,20220503,feed1
