@@ -4,7 +4,7 @@ Les fonctions python sont dans le fichier utile.py
 Pour les faires fonctionner, il faut installer les librairies présentes dans le fichier requirements.txt ou executer la commande pip -r requirements.txt dans un terminal.
 
 
-utiles.py comporte : 
+utiles.py comporte
     
     - La fonction GenericClean qui les colonnes correspondant aux id des stations de départ et d'arrivé, rajoute la colonne 'durationmin', la durée de transport en minute. Ne prend que la première sortie d'une requête et supprime les deux autres instances.
 
