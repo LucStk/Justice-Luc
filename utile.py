@@ -57,11 +57,12 @@ def filtreTime(path, max = 60*60*2, overwrite = False):
 
 
 
-def filtreCondition(path, conditions, output  = "banned.txt"):
+def filtreCondition(path, conditions, output  = "banned.txt", form = "feed__{}"):
     """
     path       : Le chemin du fichier xlsx ou csv
     conditions : Liste des conditions qui doivent être à Oui
-
+    form : format pour chaque sortie
+    
     retourne   : un fichier banned.txt contenant une liste de code arrêt CTS des station à bannir
     """
 
@@ -88,8 +89,10 @@ def filtreCondition(path, conditions, output  = "banned.txt"):
     banned = base[np.sum(banned, axis = 0) != 0]
     banned = banned["Code arrÃªt CTS"]
     banned = banned[~banned.isnull()]
+
+    l = [form.format(i) for i in list(banned)]
     o = open(output, "w")
-    o.write(str(list(banned)))
+    o.write(str(l))
     o.close()
 
 
