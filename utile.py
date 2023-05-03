@@ -57,12 +57,12 @@ def filtreTime(path, max = 60*60*2, overwrite = False):
 
 
 
-def filtreCondition(path, conditions, overwrite = False):
+def filtreCondition(path, conditions, output  = "banned.txt"):
     """
     path       : Le chemin du fichier xlsx ou csv
     conditions : Liste des conditions qui doivent être à Oui
-    overwrite  : Si True alors ré-écrit le fichier d'origine. Sinon création
-                 d'un nouveau fichier avec l'extension _Conditionfiltred.csv        
+
+    retourne   : un fichier banned.txt contenant une liste de code arrêt CTS des station à bannir
     """
 
     path_list = path.split("/")
@@ -77,22 +77,25 @@ def filtreCondition(path, conditions, overwrite = False):
 
     conditions_possibles = base.keys()[(base == "Oui").any()]
 
-    taken = []
+    banned = []
     for condition in conditions:
         #Si jamais la condition ne se trouve pas dans les conditions possible -> Error
         if condition not in conditions_possibles:
             print("Error : Condition introuvable, veuillez vérifier que l'orthographe de la condition est le même que celui de la colonne")
         else:
-            taken += [np.array(base[condition]) == "Oui"]
+            banned += [np.array(base[condition]) == "Non"]
 
-    base = base[np.sum(taken, axis = 0) == 2]
+    banned = base[np.sum(banned, axis = 0) != 0]
+    banned = banned["Code arrÃªt CTS"]
+    banned = banned[~banned.isnull()]
+    o = open(output, "w")
+    o.write(str(list(banned)))
+    o.close()
 
-    if overwrite:
-        new = "/".join(path_list[:-1]) + "/" + name + ".csv"
-    else:
-        new = "/".join(path_list[:-1]) + "/" + name + "_Conditionfiltred.csv"
+
+
+
     
-    base.to_csv(new,sep=",", index=False)
 
 
 
