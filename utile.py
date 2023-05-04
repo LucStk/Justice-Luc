@@ -57,7 +57,7 @@ def filtreTime(path, max = 60*60*2, overwrite = False):
 
 
 
-def filtreCondition(path, conditions, output  = "banned.txt", form = "feed__{}"):
+def filtreCondition(path, conditions, output  = "banned.txt", form = "feed:{}"):
     """
     path       : Le chemin du fichier xlsx ou csv
     conditions : Liste des conditions qui doivent être à Oui
