@@ -3,6 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+
+
 def filtreTime(path, max = 60*60*2, overwrite = False):
     """
     Filtre les sorties de l'algorithme des plus courts chemins
@@ -98,11 +100,6 @@ def filtreCondition(path, conditions, output  = "banned.txt", form = "feed:{}"):
 
 
 
-    
-
-
-
-
 def GenericClean(path, path_POI = None, path_Mailles = None, overwrite= False):
     """
     Construit un nouveau fichier csv modifié à partir des fichiers Poi et Mailles
@@ -153,11 +150,25 @@ def GenericClean(path, path_POI = None, path_Mailles = None, overwrite= False):
     #Création de la ligne durationmin
     base = base.assign(durationmin = lambda x : round(x.duration / 60,2))
 
+    print("Destination et origine")
     #Récupère les id des destinations et des origines en faisant une jointure gps avec les fichier POIStras et Mailles_Stras
+    
+    dicto_destination = {}
+    dicto_origine     = {}
+
+    for _,i in destination.iterrows():
+        dicto_destination["{}-{}".format(i.stop_lat, i.stop_lon)] = i.stop_name
+
+    for _,i in origine.iterrows():
+        dicto_origine["{}-{}".format(i.stop_lat, i.stop_lon)] = i.stop_id
+
     from_stop_id = []; to_stop_id = []
     for _, i in base.iterrows():
-        to_stop_id += [destination[(destination.stop_lat == i.to_lat) &(destination.stop_lon == i.to_lon)].stop_id.iloc[0]]
-        from_stop_id   += [origine[(origine.stop_lat == i.from_lat)&(origine.stop_lon == i.from_lon)].stop_id.iloc[0]]
+        dest = dicto_destination["{}-{}".format(i.to_lat, i.to_lon)]
+        orig = dicto_origine["{}-{}".format(i.from_lat, i.from_lon)]
+
+        to_stop_id   += [dest]
+        from_stop_id += [orig]
 
     #Rajout de la colonne dans l'objet panda Série
     base["from_stop_id"] = from_stop_id

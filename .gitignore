@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+data/
+FinalWP3Results draft/
+FinalWP3Results draft.zip
