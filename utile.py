@@ -149,8 +149,6 @@ def GenericClean(path, path_POI = None, path_Mailles = None, overwrite= False):
     
     #Création de la ligne durationmin
     base = base.assign(durationmin = lambda x : round(x.duration / 60,2))
-
-    print("Destination et origine")
     #Récupère les id des destinations et des origines en faisant une jointure gps avec les fichier POIStras et Mailles_Stras
     
     dicto_destination = {}
@@ -160,7 +158,7 @@ def GenericClean(path, path_POI = None, path_Mailles = None, overwrite= False):
         dicto_destination["{}-{}".format(i.stop_lat, i.stop_lon)] = i.stop_name
 
     for _,i in origine.iterrows():
-        dicto_origine["{}-{}".format(i.stop_lat, i.stop_lon)] = i.stop_id
+        dicto_origine["{}-{}".format(i.stop_lat, i.stop_lon)] = int(i.stop_id)
 
     from_stop_id = []; to_stop_id = []
     for _, i in base.iterrows():
