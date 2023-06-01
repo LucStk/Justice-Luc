@@ -1,6 +1,7 @@
 import os
 import sys
 sys.path.insert(0, os.getcwd())
+sys.path.insert(0, "..")
 from utile import *
 
 main_path = "/home/lucky/Documents/CNRS/Justice-Luc/FinalWP3Results draft/"
