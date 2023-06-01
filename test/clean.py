@@ -18,3 +18,5 @@ for p in paths:
     print(p)
     GenericClean(main_path + p)
 
+
+# %%
