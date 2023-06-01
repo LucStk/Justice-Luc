@@ -3,6 +3,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+import platform
+
+
 
 
 def filtreTime(path, max = 60*60*2, overwrite = False):
@@ -16,7 +19,14 @@ def filtreTime(path, max = 60*60*2, overwrite = False):
         
     """
 
-    path_list = path.split("/")
+    
+    operating_system = platform.system()
+    if operating_system == "Linux":
+        sep = "/"
+    else:
+        sep = "\\"
+
+    path_list = path.split(sep)
     name, format = tuple(path_list[-1].split("."))
 
     if format == "csv":
@@ -52,9 +62,9 @@ def filtreTime(path, max = 60*60*2, overwrite = False):
     print("{} lignes filtrés".format(a - len(base)))
 
     if overwrite:
-        new = "/".join(path_list[:-1]) + "/" + name + ".csv"
+        new = sep.join(path_list[:-1]) + sep + name + ".csv"
     else:
-        new = "/".join(path_list[:-1]) + "/"+ name + "_Timefiltred.csv"
+        new = sep.join(path_list[:-1]) + sep+ name + "_Timefiltred.csv"
     base.to_csv(new,sep=",", index=False)
 
 
@@ -68,7 +78,15 @@ def filtreCondition(path, conditions, output  = "banned.txt", form = "feed:{}"):
     retourne   : un fichier banned.txt contenant une liste de code arrêt CTS des station à bannir
     """
 
-    path_list = path.split("/")
+    
+    operating_system = platform.system()
+    if operating_system == "Linux":
+        sep = "/"
+    else:
+        sep = "\\"
+
+
+    path_list = path.split(sep)
     name, format = tuple(path_list[-1].split("."))
 
     if format == "csv":
@@ -116,7 +134,15 @@ def GenericClean(path, path_POI = None, path_Mailles = None, overwrite= False):
     Si ce n'est pas le cas. Indiquez le chemin de ces fichiers en arguments.
     """
 
-    path_list = path.split("/")
+
+    operating_system = platform.system()
+    if operating_system == "Linux":
+        sep = "/"
+    else:
+        sep = "\\"
+
+
+    path_list = path.split(sep)
     name, format = tuple(path_list[-1].split("."))
 
     if format == "csv":
@@ -129,12 +155,12 @@ def GenericClean(path, path_POI = None, path_Mailles = None, overwrite= False):
     if path_POI is not None:
         destination = pd.read_csv(path_POI)
     else:
-        destination = pd.read_csv("/".join(path_list[:-1])+"/POIStras.csv")
+        destination = pd.read_csv(sep.join(path_list[:-1])+ sep +"POIStras.csv")
 
     if path_Mailles is not None: 
         origine = pd.read_csv(path_Mailles)
     else:
-        origine = pd.read_csv("/".join(path_list[:-1])+"/Mailles_Stras.csv")
+        origine = pd.read_csv(sep.join(path_list[:-1])+ sep +"Mailles_Stras.csv")
 
     #Élimination des doublons
     to_drop = []
@@ -193,8 +219,8 @@ def GenericClean(path, path_POI = None, path_Mailles = None, overwrite= False):
 
     # Réécriture du fichier csv
     if overwrite:
-        new = "/".join(path_list[:-1]) + "/" + name + ".csv"
+        new = sep.join(path_list[:-1]) + sep + name + ".csv"
     else:
-        new = "/".join(path_list[:-1]) + "/" + name + "_Clean.csv"
+        new = sep.join(path_list[:-1]) + sep + name + "_Clean.csv"
     
     base.to_csv(new,sep=",", index=False)
