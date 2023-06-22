@@ -111,6 +111,7 @@ def filtreCondition(path, conditions, output  = "banned.txt", form = "feed:{}"):
     banned = banned[~banned.isnull()]
 
     l = [form.format(i) for i in list(banned)]
+    l = '"' + ",".join(l) + '"'
     o = open(output, "w")
     o.write(str(l))
     o.close()
