@@ -118,7 +118,7 @@ def filtreCondition(path, conditions, output  = "banned.txt", form = "feed:{}"):
 
 
 
-def GenericClean(path, path_POI = None, path_Mailles = None, overwrite= False):
+def GenericClean(path, path_DEPART = None, path_ARRIVE = None, overwrite= False):
     """
     Construit un nouveau fichier csv modifié à partir des fichiers Poi et Mailles
     Rajoute les id des destinations et des origines.
@@ -152,13 +152,13 @@ def GenericClean(path, path_POI = None, path_Mailles = None, overwrite= False):
     else : 
         raise "Error : Format de fichier non reconnut (csv ou xlsx)"
 
-    if path_POI is not None:
-        destination = pd.read_csv(path_POI)
+    if path_ARRIVE is not None:
+        destination = pd.read_csv(path_ARRIVE)
     else:
         destination = pd.read_csv(sep.join(path_list[:-1])+ sep +"POIStras.csv")
 
-    if path_Mailles is not None: 
-        origine = pd.read_csv(path_Mailles)
+    if path_DEPART is not None: 
+        origine = pd.read_csv(path_DEPART)
     else:
         origine = pd.read_csv(sep.join(path_list[:-1])+ sep +"Mailles_Stras.csv")
 
@@ -181,10 +181,10 @@ def GenericClean(path, path_POI = None, path_Mailles = None, overwrite= False):
     dicto_origine     = {}
 
     for _,i in destination.iterrows():
-        dicto_destination["{}-{}".format(i.stop_lat, i.stop_lon)] = i.stop_name
+        dicto_destination["{}-{}".format(i.stop_lat, i.stop_lon)] = str(i.stop_id)
 
     for _,i in origine.iterrows():
-        dicto_origine["{}-{}".format(i.stop_lat, i.stop_lon)] = int(i.stop_id)
+        dicto_origine["{}-{}".format(i.stop_lat, i.stop_lon)] = str(i.stop_id)
 
     from_stop_id = []; to_stop_id = []
     for _, i in base.iterrows():
