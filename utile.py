@@ -225,3 +225,91 @@ def GenericClean(path, path_DEPART = None, path_ARRIVE = None, overwrite= False)
         new = sep.join(path_list[:-1]) + sep + name + "_Clean.csv"
     
     base.to_csv(new,sep=",", index=False)
+
+
+
+def fixe_Base_arrêts_Bus(path_base, path_bus):
+    """
+    path base : la path du fichier Base_arret_CTS
+    path bus : la path du fichier stops.txt
+    Trouve le maximum de numéro de station (dans path_bus) et créée un nouveau fichier de nom:
+    anciennom_add_busID.xlsx avec une colonne busID les contenants.
+
+    """
+
+    operating_system = platform.system()
+    if operating_system == "Linux":
+        sep = "/"
+    else:
+        sep = "\\"
+
+    path_list = path_base.split(sep)
+    name, format = tuple(path_list[-1].split("."))
+
+    if format == "csv":
+        base = pd.read_csv(path_base, delimiter=",")
+    elif format =="xlsx":
+        base = pd.read_excel(path_base)
+    else : 
+        raise "Error : Format de fichier non reconnut (csv ou xlsx)"
+
+    #On selèctionne les lignes qui ont un identifiant CTBR et pas d'identifiant CTS
+    nona  =  base["Code arrÃªt CTBR"].notna()
+    nacts = ~base["Code arrÃªt CTS"].notna()
+    nona = np.sum((list(nona), list(nacts)), axis = 0) == 2
+    base_arret = base[nona]
+
+    f = open(path_bus).read()
+    base_bus = np.array([i.split(",") for i in f.split("\n")][1:-1])
+    #On enlève toute les sations enfants
+    parent   = np.array(base_bus[:,5]) == ''
+    base_bus = base_bus[parent]
+
+
+    noms = [ i[1:-1].lower() for i in base_bus[:,1]]
+    dict_nom = dict(zip(noms, base_bus[:,0]))
+    base["Bus ID"] = np.nan
+
+    lignes = []
+
+    for i,nc in zip(list(base_arret["Nom"]), base_arret.index):
+        nom = dict_nom.get(i.lower())
+        if nom :
+            base.at[nc,"Bus ID"] = nom
+        else :
+            lignes += [nc]
+
+    print("Les lignes de la base suivantes n'ont pas d'ID d'arrêt de bus trouvé alors que elle devrait en avoir un : \n",lignes)
+    #Changement de la place de la colonne
+
+    a = base.columns.tolist()[:33] + [base.columns.tolist()[-1]] + base.columns.tolist()[33:-1]
+    base = base[a]
+
+    base.to_excel("/".join(path_list[:-1])+"/"+name + "_add_busID.xlsx", index=False)
+
+    return
+    
+    #Partie vestigial pour les correspondances entre les stations par la lattitude et longitude.
+    decimal=3
+    # Correspondance entre les positions des stations entre base et base_bus
+    def cut_dec(n,decimal = 2): #Pour éviter round qui change de le dernier chiffre du nombre
+        n, d = str(n).split(".")
+        return n + "." + d[:decimal]
+
+
+    keys = ["{}-{}".format(cut_dec(i[1]),cut_dec(i[0])) for i in b[:,2:4]]
+    values = b[:,0]
+    dictio = dict(zip(keys, values))
+
+    bus_keys = list(zip(list(base_bus["Longitude"]), list(base_bus["Latitude"])))
+    bus_keys = ["{}-{}".format(cut_dec(i[0]), cut_dec(i[1])) for i in bus_keys]
+
+
+    c, d = np.unique(keys, return_counts=True)
+
+    print(d)
+    print(d[0])
+    c[0]
+
+    t1 = np.where(np.array(keys) == '48.11-7.54')[0]
+    print(values[t1])
